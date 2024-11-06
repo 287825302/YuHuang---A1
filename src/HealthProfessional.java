@@ -12,7 +12,12 @@ public class HealthProfessional {
  public HealthProfessional(){
 
  }
- public HealthProfessional(String name, char Sex, int ID,int Age){
+ public HealthProfessional(String name, char Sex, String Specialization ,int ID,int Age){
+         this.Name=name;
+         this.Sex = Sex;
+         this.specialization =Specialization;
+         this.ID= ID;
+         this.Age = Age;
 
  }
 
