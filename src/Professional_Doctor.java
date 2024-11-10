@@ -19,9 +19,9 @@ public class Professional_Doctor extends HealthProfessional{
 
     public void OUTPUT(){
         System.out.println("The detailed information is as follows");
-        System.out.println("Professional_Doctor:");
-        super.toString();
-        System.out.println("What is the professional field of work:"+Work_Department);
+        System.out.println("<<<<<<<Professional_Doctor:"+Work_Department+">>>>>>");
+        System.out.println(super.toString());
+
 
     }
 }

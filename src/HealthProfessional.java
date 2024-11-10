@@ -68,10 +68,10 @@ public class HealthProfessional {
  @Override
  public String toString() {
   return "HealthProfessional{" +
-          "Name='" + Name + '\'' +
-          ", Sex=" + Sex +
-          ", ID=" + ID +
-          ", Age=" + Age +
+          "Name------>'" + Name + '\'' +
+          ", Sex-------->" + Sex +
+          ", ID------>" + ID +
+          ", Age--------->" + Age +
           '}';
  }
 }

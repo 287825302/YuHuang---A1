@@ -20,9 +20,10 @@ public class GeneralPractitioner extends HealthProfessional{
 
     public void OUTPUT(){
         System.out.println("The detailed information is as follows");
-        System.out.println("GeneralPractitioner:");
-        super.toString();
+        System.out.println("<<<<<GeneralPractitioner:>>>>>");
         System.out.println("Already working:"+Working_Age+"Year");
+        System.out.println(super.toString());
+
 
     }
 
