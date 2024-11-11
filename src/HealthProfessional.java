@@ -74,4 +74,12 @@ public class HealthProfessional {
           ", Age--------->" + Age +
           '}';
  }
+
+ public void OUTPUT(){
+
+  return   ;
+ }
+
+
+
 }
