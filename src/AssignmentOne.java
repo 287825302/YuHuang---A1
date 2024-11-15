@@ -23,16 +23,18 @@ public class AssignmentOne {
         ArrayList<Appointment> Appointment_system = new ArrayList<>();
 
         // Create patients
-        Patient patient1 = new Patient("John Doe", "1234567890", 30, 'M', true);
-        Patient patient2 = new Patient("Jane Smith", "0987654321", 25, 'F', false);
-        Patient patient3 = new Patient("Bob Johnson", "1122334455", 40, 'M', true);
-        Patient patient4 = new Patient("Alice Brown", "5566778899", 35, 'F', false);
+        Patient patient1 = new Patient("Wei Wang", "13987654321", 40, 'M', false);
+        Patient patient2 = new Patient("Na Li", "13876543210", 35, 'F', true);
+        Patient patient3 = new Patient("Qiang Zhang", "13612345678", 25, 'M', true);
+        Patient patient4 = new Patient("Yang Liu", "13798765432", 30, 'F', false);
+
 
         // Create health professionals
-        GeneralPractitioner gp1 = new GeneralPractitioner("Dr. Smith", 'M', "Family Medicine", 1001, 35, 10);
-        GeneralPractitioner gp2 = new GeneralPractitioner("Dr. Johnson", 'F', "Internal Medicine", 1002, 40, 15);
-        Professional_Doctor pd1 = new Professional_Doctor("Dr. Brown", 'F', "Cardiology", 2001, 38, "Heart Surgery");
-        Professional_Doctor pd2 = new Professional_Doctor("Dr. Davis", 'M', "Neurology", 2002, 42, "Brain Disorders");
+        GeneralPractitioner gp1 = new GeneralPractitioner("Dr. Chen Wei", 'M', "Family Medicine", 1010, 45, 20);
+        GeneralPractitioner gp2 = new GeneralPractitioner("Dr. Zhang Li", 'F', "Internal Medicine", 1020, 50, 25);
+        Professional_Doctor pd1 = new Professional_Doctor("Dr. Li Ming", 'M', "Cardiology", 2010, 40, "Heart Surgery");
+        Professional_Doctor pd2 = new Professional_Doctor("Dr. Zhao Qian", 'F', "Neurology", 2020, 38, "Brain Disorders");
+
 
         // Make 2 appointments with general practitioners
         createAppointment(Appointment_system,patient1, "09:00", gp1);
@@ -60,7 +62,10 @@ public class AssignmentOne {
 
 
 
-
+//========================================================================================//
+//========================================================================================//
+//========================================================================================//
+    //-----------------------The following are specific methods------------------------//
 
 
 
@@ -76,16 +81,18 @@ public class AssignmentOne {
 
 
 
-        // 创建三个 General Practitioners 对象
-        GeneralPractitioner gp1 = new GeneralPractitioner("Dr. Smith", 'M', "Family Medicine", 1001, 35, 10);
-        GeneralPractitioner gp2 = new GeneralPractitioner("Dr. Johnson", 'F', "Pediatrics", 1002, 40, 15);
-        GeneralPractitioner gp3 = new GeneralPractitioner("Dr. Williams", 'M', "Internal Medicine", 1003, 45, 20);
-
-        // 创建两个 Professional_Doctor 对象
-        Professional_Doctor pd1 = new Professional_Doctor("Dr. Brown", 'F', "Cardiology", 2001, 38, "Heart Surgery");
-        Professional_Doctor pd2 = new Professional_Doctor("Dr. Davis", 'M', "Neurology", 2002, 42, "Brain Disorders");
+        // Create three General Practitioners objects
+        GeneralPractitioner gp1 = new GeneralPractitioner("Dr. Wang Hong", 'M', "Family Medicine", 1001, 35, 10);
+        GeneralPractitioner gp2 = new GeneralPractitioner("Dr. Liu Fang", 'F', "Pediatrics", 1002, 40, 15);
+        GeneralPractitioner gp3 = new GeneralPractitioner("Dr. Li Wei", 'M', "Internal Medicine", 1003, 45, 20);
 
 
+        // Create two Professionalist_Doctor objects
+        Professional_Doctor pd1 = new Professional_Doctor("Dr. Yang Li", 'F', "Cardiology", 2001, 38, "Heart Surgery");
+        Professional_Doctor pd2 = new Professional_Doctor("Dr. Xiao Ming", 'M', "Neurology", 2002, 42, "Brain Disorders");
+
+
+        //Add 5 doctor objects to the collection
         healthProfessionals.add(gp1);
         healthProfessionals.add(gp2);
         healthProfessionals.add(gp3);
@@ -118,9 +125,10 @@ public class AssignmentOne {
                 System.out.println("------------------------------");
                 for (HealthProfessional professional : healthProfessionals) {
                     if (professional instanceof GeneralPractitioner) {
-                        ((GeneralPractitioner) professional).OUTPUT();
-                    } else if (professional instanceof Professional_Doctor) {
-                        ((Professional_Doctor) professional).OUTPUT();
+                        professional.OUTPUT();
+                    }
+                    else if (professional instanceof Professional_Doctor) {
+                        professional.OUTPUT();
                     }
                     System.out.println();
                     System.out.println("------------------------------");
@@ -133,19 +141,24 @@ public class AssignmentOne {
         }
 
     }
-
+//========================================================================================//
+//========================================================================================//
+//========================================================================================//
 
     //Part 5 – Collection of appointments
     //Part 5 – Collection of appointments
     //Part 5 – Collection of appointments
 
               public static void createAppointment(ArrayList<Appointment> Appointment_system ,Patient patient, String preferredTimeSlot, HealthProfessional doctor) {
-                  if (patient != null && preferredTimeSlot != null && doctor != null) {
+                  if (patient == null || preferredTimeSlot == null || doctor == null) {
+
+                      System.out.println("Error: All required information must be provided to create an appointment.");
+
+                  } else {
+
                       Appointment newAppointment = new Appointment(patient, preferredTimeSlot, doctor);
                       Appointment_system.add(newAppointment);
                       System.out.println("Appointment created successfully.");
-                  } else {
-                      System.out.println("Error: All required information must be provided to create an appointment.");
                   }
               }
 
@@ -153,35 +166,77 @@ public class AssignmentOne {
                     if (Appointment_system.isEmpty()) {
                         System.out.println("There are no existing appointments.");
                     } else {
+
                         System.out.println("Existing Appointments:");
-                        for (Appointment appointment : Appointment_system) {
-                            appointment.OUTPUT();
-                            System.out.println("------------------------------");
-                        }
+                       // I used the simplest lambda expression
+                        //This is the simplest version and also references method citations
+                        Appointment_system.forEach(System.out::println);
+//
+//
+
                     }
                 }
 
-
+               //My method this time uses the reverse writing of a regular for loop
+               // , which is the most primitive method and a simple way to reflect thinking
+               //I can also use the iterator method, but I have already thrown it in the abandoned code at the bottom
                 public static void cancelBooking(ArrayList<Appointment> Appointment_system,String mobilePhone) {
-                    Iterator<Appointment> iterator = Appointment_system.iterator();
-                    boolean found = false;
-                    while (iterator.hasNext()) {
-                        Appointment appointment = iterator.next();
-                        if (appointment.getPatient().getMobilePhone().equals(mobilePhone)) {
-                            iterator.remove();
-                            found = true;
-                            System.out.println("Appointment cancelled for patient with mobile number: " + mobilePhone);
-                            break;
-                        }
-                    }
-                    if (!found) {
-                        System.out.println("Error: No appointment found for mobile number: " + mobilePhone);
-                    }
+                   if(Appointment_system!=null &&  mobilePhone!=null){
+                       for (int i = Appointment_system.size()-1; i >=0 ; i--) {
+                           Appointment AA1 =Appointment_system.get(i);
+                           String SS1  = AA1.getPatient().getMobilePhone();
+                           if (SS1.equals(mobilePhone)){
+                               Appointment_system.remove(i);
+
+                               System.out.println("The patient's appointment information " +
+                                       "has been deleted through their mobile phone number");
+                           }
+
+                   }
+                }else {
+                       System.out.println("The data you entered has errors, please recheck");
+                   }
+
                 }
 
 
 
 
+
+                //The following is the abandoned code reserved for easy
+              // restoration of the original state of the program at any time
+//========================================================================================//
+//========================================================================================//
+//========================================================================================//
+
+
+                //for (int i = Appointment_system.size()-1; i >0 ; i--) {
+    //                                Appointment AA1 =Appointment_system.get(i);
+    //                               String SS1  = AA1.getPatient().getMobilePhone();
+    //                               if (SS1.contains(mobilePhone)){
+    //                                   Appointment_system.remove(i);
+    //                                   i--;
+    //                               }
+    //
+    //
+    //                            }
+
+
+    //Iterator<Appointment> iterator = Appointment_system.iterator();
+    //                    boolean found = false;
+    //                    while (iterator.hasNext()) {
+    //                        Appointment appointment = iterator.next();
+    //                        if (appointment.getPatient().getMobilePhone().equals(mobilePhone)) {
+    //                            iterator.remove();
+    //
+    //                            found = true;
+    //                            System.out.println("Appointment cancelled for patient with mobile number: " + mobilePhone);
+    //                            break;
+    //                        }
+    //                    }
+    //                    if (!found) {
+    //                        System.out.println("Error: No appointment found for mobile number: " + mobilePhone);
+    //                    }
 
 }
 
